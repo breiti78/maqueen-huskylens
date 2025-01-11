@@ -5,6 +5,9 @@ function InitRobo () {
 input.onButtonPressed(Button.A, function () {
     Maqueen_V5.servoRun(Maqueen_V5.Servos.S1, GripperOpen)
 })
+radio.onReceivedString(function (receivedString) {
+    Maqueen_V5.servoRun(Maqueen_V5.Servos.S1, GripperOpen)
+})
 input.onButtonPressed(Button.B, function () {
     Maqueen_V5.servoRun(Maqueen_V5.Servos.S1, GripperClosed)
 })
@@ -36,6 +39,7 @@ function InitGripper () {
 let strip: neopixel.Strip = null
 let GripperClosed = 0
 let GripperOpen = 0
+radio.setGroup(1)
 huskylens.initI2c()
 huskylens.initMode(protocolAlgorithm.ALGORITHM_OBJECT_TRACKING)
 initVariables()
